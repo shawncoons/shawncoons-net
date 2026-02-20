@@ -1,0 +1,409 @@
+/* ── Reset & Base ─────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Warm light palette */
+  --color-bg: #f7f4f0;
+  --color-surface: #ffffff;
+  --color-surface-hover: #fdfcfb;
+  --color-border: rgba(0, 0, 0, 0.07);
+  --color-border-hover: rgba(180, 120, 60, 0.35);
+
+  /* Text */
+  --color-text: #4a4550;
+  --color-text-muted: #8a8490;
+  --color-heading: #2a2330;
+
+  /* Accents — warm amber primary, muted plum secondary */
+  --color-accent: #c07535;
+  --color-accent-hover: #a86228;
+  --color-accent-warm: #7b5ea7;
+  --color-accent-glow: rgba(192, 117, 53, 0.1);
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 8px 28px rgba(0, 0, 0, 0.1), 0 2px 6px rgba(192, 117, 53, 0.08);
+
+  /* Misc */
+  --radius: 14px;
+  --radius-sm: 10px;
+  --container-max: 840px;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.25s;
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+ul {
+  list-style: none;
+}
+
+/* ── Layout ───────────────────────────────────────── */
+
+.container {
+  width: 90%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+}
+
+/* ── Header ───────────────────────────────────────── */
+
+.site-header {
+  position: relative;
+  padding: 6rem 0 4rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.header-glow {
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  translate: -50% 0;
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(192, 117, 53, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.site-header .container {
+  position: relative;
+  z-index: 1;
+}
+
+.header-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+  padding: 0.35rem 1rem;
+  border: 1px solid rgba(192, 117, 53, 0.3);
+  border-radius: 100px;
+  background: rgba(192, 117, 53, 0.06);
+}
+
+.site-header h1 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-heading);
+  margin-bottom: 0.6rem;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+/* ── Sections ─────────────────────────────────────── */
+
+section {
+  padding: 3.5rem 0;
+}
+
+section h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-heading);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.section-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent-glow);
+  color: var(--color-accent);
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.section-intro {
+  color: var(--color-text-muted);
+  margin-bottom: 1.75rem;
+  font-size: 1.02rem;
+}
+
+/* ── Where to Find Me ─────────────────────────────── */
+
+.link-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+
+.link-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.5rem 1.6rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+
+.link-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--color-border-hover);
+  color: var(--color-text);
+}
+
+.link-icon {
+  font-size: 1.5rem;
+  color: var(--color-accent);
+  margin-bottom: 0.3rem;
+  transition: color 0.25s;
+}
+
+.link-card:hover .link-icon {
+  color: var(--color-accent-warm);
+}
+
+.link-label {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--color-heading);
+}
+
+.link-desc {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* ── Featured Articles ────────────────────────────── */
+
+.article-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.article-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+
+.article-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--color-border-hover);
+}
+
+.article-card a {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.5rem 1.6rem;
+  color: var(--color-text);
+}
+
+.article-number {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: rgba(192, 117, 53, 0.25);
+  flex-shrink: 0;
+  min-width: 2.5rem;
+  transition: color 0.25s;
+}
+
+.article-card:hover .article-number {
+  color: var(--color-accent);
+}
+
+.article-card h3 {
+  font-family: "Inter", sans-serif;
+  font-size: 1.08rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--color-heading);
+}
+
+.article-card p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.article-arrow {
+  margin-left: auto;
+  color: rgba(192, 117, 53, 0.25);
+  font-size: 0.95rem;
+  flex-shrink: 0;
+  transition: color 0.25s, transform 0.25s;
+}
+
+.article-card:hover .article-arrow {
+  color: var(--color-accent);
+  transform: translateX(3px);
+}
+
+/* ── Favorite Board Games ─────────────────────────── */
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1rem;
+}
+
+.game-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1.3rem 1.5rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+.game-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--color-accent);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.game-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--color-border-hover);
+}
+
+.game-card:hover::before {
+  opacity: 1;
+}
+
+.game-name {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--color-heading);
+}
+
+.game-note {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* ── Footer ───────────────────────────────────────── */
+
+.site-footer {
+  padding: 4rem 0 2.5rem;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--color-border);
+}
+
+/* ── Easter Egg ───────────────────────────────────── */
+
+.easter-egg {
+  position: fixed;
+  top: 1.25rem;
+  right: 1.25rem;
+  font-size: 1.4rem;
+  opacity: 0.3;
+  transition: opacity 0.3s, transform 0.3s;
+  z-index: 10;
+  text-decoration: none;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.easter-egg:hover {
+  opacity: 1;
+  transform: scale(1.3);
+}
+
+/* ── Responsive ───────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .site-header {
+    padding: 4rem 0 2.5rem;
+  }
+
+  .site-header h1 {
+    font-size: 2.4rem;
+  }
+
+  .tagline {
+    font-size: 1.05rem;
+  }
+
+  section h2 {
+    font-size: 1.4rem;
+  }
+
+  .link-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .games-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .article-card a {
+    padding: 1.25rem;
+    gap: 1rem;
+  }
+
+  .article-number {
+    font-size: 1.3rem;
+    min-width: 2rem;
+  }
+}
